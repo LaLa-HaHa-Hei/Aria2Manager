@@ -1,0 +1,28 @@
+﻿<Application x:Class="Aria2Manager.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Aria2Manager"
+             xmlns:vm="clr-namespace:Aria2Manager.ViewModels"
+             xmlns:tb="http://www.hardcodet.net/taskbar"
+             ShutdownMode="OnExplicitShutdown"
+             Startup="Application_Startup" 
+             Exit="Application_Exit">
+    <Application.Resources>
+        <tb:TaskbarIcon x:Key="TaskbarIcon"
+                        IconSource="/Resources/Icon.ico"
+                        ToolTipText="LocalAria2Manager"
+                        LeftClickCommand="{Binding ToggleWindowVisibilityCommand}">
+        </tb:TaskbarIcon>
+        <ContextMenu x:Key="ContextMenu">
+            <MenuItem Header="重启aria2" Command="{Binding RestartAria2Command}" />
+            <MenuItem Header="启动aria2" Command="{Binding StartAria2Command}" />
+            <MenuItem Header="关闭aria2" Command="{Binding StopAria2Command}" />
+            <MenuItem Header="显示aria2输出" Command="{Binding OpenAria2LogWindowCommand}" />
+            <Separator />
+            <MenuItem Header="显示窗口" Command="{Binding ShowMainWindowCommand}" />
+            <MenuItem Header="隐藏窗口" Command="{Binding HideMainWindowCommand}" />
+            <Separator />
+            <MenuItem Header="退出" Command="{Binding ExitApplicationCommand}" />
+        </ContextMenu>
+    </Application.Resources>
+</Application>
